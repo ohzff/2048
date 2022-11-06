@@ -47,7 +47,7 @@ jobs:
           make -j 4
           make install
           ls "${{env.prefix}}"
-          cd "${{env.prefix}}/bin"
+          cd "${{env.prefix}}/build"
           ls
           ./CMakePrj
           python --version
