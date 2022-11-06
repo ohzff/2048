@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: OneFLOW_Linux_CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    name: "Linux OneFLOW CFD build"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Display the path by pwsh
+        run: echo ${env:PATH}
+        shell: pwsh  
+      - name: Display github.workspace by pwsh
+        run: |
+          echo "github.workspace is ${{ github.workspace }}."  
+          ls ${{ github.workspace }}
+        shell: pwsh
+      - name: CMake Build
+        run: |
+          cd ${{ github.workspace }}
+          ls
+          mkdir build
+          cd build
+          cmake --version
+          cmake -DCMAKE_INSTALL_PREFIX=${{ github.workspace }} ../
+          ls
+        shell: pwsh
+      - name: CMake Install
+        env:
+          prefix: ${{ github.workspace }}
+        run: |
+          cd ${{ github.workspace }}/build
+          ls
+          make -j 4
+          make install
+          ls "${{env.prefix}}"
+          cd "${{env.prefix}}/bin"
+          ls
+          ./CMakePrj
+          python --version
+          [Environment]::GetLogicalDrives()
+        shell: pwsh
