@@ -37,7 +37,7 @@ jobs:
           cmake --version
           cmake -DCMAKE_INSTALL_PREFIX=${{ github.workspace }} ../
           ls
-        shell: pwsh
+        shell: bash
       - name: CMake Install
         env:
           prefix: ${{ github.workspace }}
@@ -49,7 +49,7 @@ jobs:
           ls "${{env.prefix}}"
           cd "${{env.prefix}}/build"
           ls
-          ./CMakePrj
+          ./2048
           python --version
           [Environment]::GetLogicalDrives()
-        shell: pwsh
+        shell: bash
