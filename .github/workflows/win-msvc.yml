@@ -1,0 +1,24 @@
+name: C/C++ Windows CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up MinGW
+      uses: egor-tensin/setup-mingw@v2
+      id: setup
+      with:
+        platform: x64
+    - name: Build
+      run: |
+        dir
+        ${{ steps.setup.outputs.gxx }} ./2048/main.cpp -o ./2048.exe
