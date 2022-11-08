@@ -21,4 +21,4 @@ jobs:
     - name: Build
       run: |
         dir
-        ${{ steps.setup.outputs.gxx }} ./2048/main.cpp -o ./2048.exe
+        ${{ steps.setup.outputs.gxx }} ./main.cpp -o ./2048.exe
