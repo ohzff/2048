@@ -38,4 +38,10 @@ jobs:
     - name: Find
       run: |
         ls
+        echo ----
         ls build
+    - name: Upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: 2048-Linux-x86_64
+        path: ./build/2048
