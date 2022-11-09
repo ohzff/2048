@@ -22,3 +22,7 @@ jobs:
       run: |
         dir
         ${{ steps.setup.outputs.gxx }} ./main.cpp -o ./2048.exe
+    - uses: actions/upload-artifact@v3
+      with:
+        name: 2048-Windows-x86_64.exe
+        path: ./2048.exe
