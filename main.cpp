@@ -1,3 +1,7 @@
+/*
+Game is made by 5+1 <wjy@516wjy.xyz  https://516wjy.xyz:516/>
+*/
+
 #include <iostream>
 #include <cstdio>
 #include <cstring>
@@ -41,7 +45,7 @@ inline int check(int num){
 	if(num==113)return 9;
 	if(num==27)return 27;
     if(num==224||num==-32||num == 91)return -1;
-	else return 0;
+	return 0;
 }
 
 void keyboard_check ()
@@ -247,5 +251,6 @@ int main ()
 {
     init ();
     game ();
+    printf ("Game 2048, made by 5+1 <wjy@516wjy.xyz>\n");
     return 0;
 }
